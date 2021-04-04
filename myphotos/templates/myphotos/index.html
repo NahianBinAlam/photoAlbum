@@ -28,6 +28,8 @@
 
     <div class="container">
         <div class="row">
+
+           
             <div class="col-md-3">
 
                 <div class="card">
@@ -38,13 +40,14 @@
                         <li class="list-group-item">
                             <a href="">All</a>
                         </li>
+                        {% for category in categories %}
                         
                         <li class=" list-group-item">
-                            <a href="">
+                            <a href="">{{category.name}}
                                 
                             </a>
                         </li>
-                       
+                       {% endfor %}
 
 
                         <a href="" class="btn btn-dark btn-block btn-sm m-1">Add Photo</a>
@@ -53,22 +56,23 @@
                 </div>
 
             </div>
+           
             <div class="col-md-9">
                 <div class="row">
 
-                   
+                    {% for photo in photos %}
                     <div class="col-md-4">
                         <div class="card my-2">
-                            <img class="image-thumbail" src="https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt="Card image cap">
-
+                            <img class="image-thumbail" src="{{photo.image.url}}">
                             <div class="card-body">
-                                <small>Category: </small>
+                                <small>Category: {{photo.category.name}}</small>
                             </div>
-                            <a href="" class="btn btn-outline-dark btn-sm m-1">View</a>
+                            <a href="{% url 'photo' photo.id %}" class="btn btn-outline-dark btn-sm m-1">View</a>
                         </div>
                     </div>
-                    
-                    <h3>No photos...</h3>
+                    {% empty %}
+                    <h3>no photos</h3>
+                    {% endfor %}
                     
 
 
