@@ -38,13 +38,13 @@
                     </div>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item">
-                            <a href="">All</a>
+                            <a href="{% url 'index' %}">All</a>
                         </li>
                         {% for category in categories %}
                         
                         <li class=" list-group-item">
-                            <a href="">{{category.name}}
-                                
+                            <a href="{% url 'index' %}?category={{category.name}}">
+                                {{category.name}}
                             </a>
                         </li>
                        {% endfor %}
